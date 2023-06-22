@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import NavbarComponent from '../components/navbar.component';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
   const [query, setQuery] = useState('');
   const [film, setFilm] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const searchFilm = async () => {
@@ -14,6 +17,13 @@ const HomePage = () => {
     }
     searchFilm();
   }, [query]);
+
+  const handleDetailFilm = (event) => {
+    const imdbID = event.target.value;
+    console.info(imdbID, '=> idnya');
+
+    navigate(`/movie/detail/${imdbID}`);
+  };
 
   return (
     <>
@@ -61,8 +71,8 @@ const HomePage = () => {
                       <p className='card-text'>
                         Movie Type: { data.Type }
                       </p>
-                      <div class="d-grid mt-2">
-                        <p class="btn btn-primary">Detail</p>
+                      <div className="d-grid mt-2">
+                        <button className="btn btn-primary" value={ data.imdbID } onClick={ handleDetailFilm }>Detail</button>
                       </div>
                     </div>
                   </div>

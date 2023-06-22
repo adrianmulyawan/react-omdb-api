@@ -3,8 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// > Bootstrap
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap';
+// > Redux
+// import { createStore, applyMiddleware, compose } from 'redux';
+// import { Provider } from 'react-redux';
+// import thunk from 'redux-thunk';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
